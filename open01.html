@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Start Screen</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <div class="opening-screen">
+    <div class="opening-text">
+      <h1 class="text-part1">君の</h1>
+      <h1 class="text-part2">肉トレを</h1>
+      <h1 class="text-part3">見せてもらおうか</h1>
+      <h1 class="text-part4"></h1>
+    </div>
+  </div>
+  <div class="start-screen" style="display: none;">
+    <h1>Yasumori_Grupe_肉QUIZ_NEO</h1>
+    <a href="/index.html">
+      <button id="start-btn">Start</button>
+    </a>
+  </div>
+  <audio id="sound">
+    <source src="/audio/「いらっしゃいませ！」.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="/script.js"></script>
+  <script>
+    // Add this script to play the sound when the button is clicked
+    document.getElementById("start-btn").addEventListener("click", function () {
+      const sound = document.getElementById("sound");
+      sound.currentTime = 0; // Reset the playback position to the beginning
+      sound.play();
+    });
+  </script>
+</body>
+
+</html>

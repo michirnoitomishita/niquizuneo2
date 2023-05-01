@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>焼肉研究会NEO</title>
+  <link rel="stylesheet" href="/index.css">
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="yakiniku_ken.js"></script>
+
+
+</head>
+<body>
+    <div class="title_box">
+    <div class="title_box_text" >
+      <h1 >
+        熱血肉トレNEO
+      </h1>
+      <p class="yasumorigrope">やすもりグループ</p>
+      <!-- コンピューターが読み込む→タグで読み込んでいく<p></p> -->
+      <!-- クラスの名前は自分で考えていい -->
+    </div>
+    </div>
+
+  
+  <div class="coment">
+<p> 写真の部位に答えて美味しい肉トレを楽しもう！
+</p>
+<p>問題シャッフルしちゃう？</p>
+</div>
+
+
+<main class="main">
+<button id="start_btn"> スタート</button>
+<button id="stop_btn" disabled> ストップ</button>
+
+
+  
+
+<!-- 乱数素材 -->
+<div class="q_rist" id="q_rist">
+<ul>
+  <div class="gu_two_btn" id="gu_two_btn">
+    <div class="two_btn_contener">
+    <li id="two_btn" class="shaffle" >【Question 1】</li>
+      <div class="ansur_list02  hidden">
+          <img src="/img/カルビL.jpg " width="300px" alt="プレミアムロース  ">
+          <p>問題１：この部位の名前は？</p>
+          <ul id="01_01">①ロース</ul>
+          <ul id="01_02">②特選カルビ</ul>
+          <ul id="01_03">③シャトーブリアン</ul>
+          </div>
+      </div>
+    </div>
+
+
+  <div class="gu_btn_contener">
+    <li id="gu_btn" class="shaffle">【Question 2】</li>
+    <div div class="ansur_list01 hidden">
+      <img src="/img/プレミアムロース.png " width="300px" alt="カルビ">
+      <p>問題2：この部位の名前は？</p>
+      <ul id="02_01">①プレミアムロース</ul>
+      <ul id="02_02">②カイノミ</ul>
+      <ul id="02_03">③ホルモン</ul>
+      </div>
+  </div>
+  </div>
+<style>
+  .vertical-align {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+<!-- また、このコードをHTMLに追加することで、写真と回答が縦に並べられます。ただし、このコードだけを追加しても正常に動作しない場合があります。 -->
+<div class="three_fore_btn" id="three_fore_btn">
+  <div class="three_btn_contener">
+  <li id="three_btn" class="shaffle">【Question 3】</li>
+      <div class="ansur_list03 hidden">
+        <img src="/img/赤身カルビk改L.jpg " width="300px" alt="ハラミ">
+        <ul id="03_01">①バラロース</ul>
+        <ul id="03_02">②骨付きカルビ</ul>
+        <ul id="03_03">③ハラミ</ul>
+      </div>
+  </div>
+  </div>
+  <div class="fore_btn_contener">
+        <li id="four_btn" class="shaffle">【Question 4】</li>
+      <div class="ansur_list04 hidden">
+        <img src="/img/とんちゃん炊き01.jpeg" width="300px" alt="ハラミ">
+        <ul id="04_01">①博多モツ鍋</ul>
+        <ul id="04_02">②ナッチポックン</ul>
+        <ul id="04_03">③元祖とんちゃん鍋</ul>
+</div>
+</div>
+</div>
+</ul>
+</div>
+<div class="sita"></div>
+<div class="kaito">
+<div id="com_hand">回  答</div>
+<div id="result">結果は？</div>
+<!-- 正解時や失敗時の画像のコンテナ -->
+<!-- <div id="win-image-container" style="display: none;">
+  <img id="win-image" src="/img/70c698c17619fea99e1346ea482f9aaf.png"　 alt="勝利画像" >
+</div>
+<div id="lose-image-container" style="display: none;">
+  <img id="lose-image" src="/img/image-6.png" 　 alt="負け画像"> -->
+</div>
+
+
+
+</div>
+
+<div class="win_contener">
+    <!--  勝敗スカウター -->
+    <div id="win-counter"> 正解の回数: 0</div>
+    <!-- HTML部分: 何戦何勝を表示するための要素を追加 -->
+    <div id="match-info"> 正解数: 0問中0正解
+  </div>
+  <div class="win_contener02">
+    <div id="win-rate"> 正解率: 0%</div>
+
+  </div>
+  </div>
+</div>
+
+<button id="reset_btn" onclick="reset()">リセット</button>
+</main>
+
+<footer>Yasumori_Group</footer>
+
+
+<script>
+   $("#gu_btn").on("click", function () {
+      $(".ansur_list01").toggleClass("hidden");
+    });
+
+    $("#two_btn").on("click", function () {
+      $(".ansur_list02").toggleClass("hidden");
+    });
+    $("#three_btn").on("click", function () {
+      $(".ansur_list03").toggleClass("hidden");
+    });
+  $("#four_btn").on("click", function () {
+    $(".ansur_list04").toggleClass("hidden");
+  });
+
+
+  // 勝率のコード
+  let winCount = 0;
+  let gameCount = 0;
+
+  function updateWinRate() {
+    let winRate = (winCount / gameCount) * 100;
+    if (isNaN(winRate)) winRate = 0;
+    $("#win-rate").text(`正解率: ${winRate.toFixed(2)}%`);
+
+  }
+
+  function updateMatchInfo() {
+    $("#match-info").text(`何問中何正解: ${gameCount}問中${winCount}正解`);
+  }
+
+  const min = 0;
+  const max = 2;
+
+  const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+  console.log(randomNumber);
+  
+
+  
+  // スロット
+  // 質問リストを取得
+  const questionList = $("#q_rist li");
+
+  // スロットの停止フラグ
+  let stopFlag = true;
+  let timerId; // タイマーIDをグローバルスコープに移動
+
+
+
+  function updateMatchInfo() {
+    $("#match-info").text(`正解数: ${gameCount}問中${winCount}正解`);
+  }
+
+</script>
+  <script src="/main.js"></script>
+</body>
+
+</html>

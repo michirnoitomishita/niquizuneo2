@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4マスルーレット</title>
+  <style>
+    .roulette {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 1px solid black;
+      position: relative;
+      display: inline-block;
+      margin: 10px;
+    }
+
+    .roulette p {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="roulette" id="roulette1">
+    <p>Question 1</p>
+  </div>
+  <div class="roulette" id="roulette2">
+    <p>Question 2</p>
+  </div>
+  <div class="roulette" id="roulette3">
+    <p>Question 3</p>
+  </div>
+  <div class="roulette" id="roulette4">
+    <p>Question 4</p>
+  </div>
+
+  <script>
+    const roulettes = document.querySelectorAll('.roulette');
+    let intervalIds = [];
+
+    // ルーレットを回す
+    function spinRoulette(roulette) {
+      const intervalId = setInterval(() => {
+        const degree = Math.random() * 360;
+        roulette.style.transform = `rotate(${degree}deg)`;
+      }, 50);
+      intervalIds.push(intervalId);
+    }
+
+    // ルーレットを停止する
+    function stopRoulette(roulette) {
+      const intervalId = intervalIds.shift();
+      clearInterval(intervalId);
+      roulette.style.transform = `rotate(${Math.floor((roulette.dataset.degree / 360)) * 360}deg)`;
+    }
+
+    // スタートボタンをクリックしたときの処理
+    document.getElementById('start_btn').addEventListener('click', () => {
+      // 各ルーレットを回す
+      roulettes.forEach((roulette, index) => {
+        const degree = 360 * (index + 1) + Math.random() * 360;
+        roulette.dataset.degree = degree;
+        spinRoulette(roulette);
+      });
+    });
+
+    // ストップボタンをクリックしたときの処理
+    document.getElementById('stop_btn').addEventListener('click', () => {
+      // 各ルーレットを停止する
+      roulettes.forEach((roulette) => {
+        stopRoulette(roulette);
+      });
+    });
+  </script>
+</body>
+
+</html>

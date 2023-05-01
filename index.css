@@ -1,0 +1,237 @@
+body {
+font-family: Arial, sans-serif;
+  text-align: center;
+  /* background-color: black */
+  max-width: 960px;
+
+}
+/* 全体の幅は960px */
+/* 背景に写真をおいてその上にテキストを置くCSS */
+.title_box {
+  background: url(/img/HP_0983.jpg);
+  /* 背景を決める。外に出る場合../ */
+  background-size: cover;
+  /* 背景画像のはめこみ */
+  background-position: center;
+  /*  */
+  height: 200px;
+  color: white;
+  text-align: center;
+}
+
+.main{
+    cursor: pointer;
+}
+
+
+li:hover {
+  cursor: pointer;
+}
+
+.title_box_text {
+  padding: 30px;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 5px;
+    /* h1の下のマージンを5pxに設定 */
+
+}
+.yasumorigrope {
+  font-size: 24px;
+    margin-top: 5px;
+    /* .yasumorigropeの上のマージンを5pxに設定 */
+    font-weight: bold;
+}
+p {
+  font-size: 18px;
+  line-height: 1.2;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+
+.two_btn_contener {
+  text-align: center;
+
+}
+
+.gu_btn_contener{
+text-align: center;
+}
+
+
+.three_btn_contener{
+text-align: center;
+
+}
+.gu_two_btn{
+  display: flex;
+  justify-content: center;
+    align-items: center;
+}
+#two_btn,
+#gu_btn {
+  flex: 1;
+}
+
+.three_fore_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+#three_btn,
+#four_btn {
+  flex: 1;
+}
+
+#three_btn {
+  list-style: none;
+  font-size: 24px;
+}
+
+#four_btn {
+  list-style: none;
+  font-size: 24px;
+}
+
+
+
+.win_contener{
+  font-size: 24px;
+  flex-direction: column;
+  display: flex;
+}
+
+  /* .win_contener01 {
+    display: flex;
+  }
+  .win_contener02 {
+    display: flex;
+} */
+
+ul {
+  list-style: none;
+  /* リストのドットを非表示 */
+  padding-left: 0;
+  /* リストのインデントを解除 */
+    cursor: pointer;
+}
+
+.q_rist{
+  font-size: 24px;
+ 
+}
+
+.kaito{
+  font-size: 40px;
+  font-weight: bold;
+}
+
+
+/* スタートボタン */
+#start_btn {
+  background-color: #4CAF50;
+  /* ボタンの背景色 */
+  border: none;
+  /* ボタンの枠線をなくす */
+  color: white;
+  /* 文字色 */
+  padding: 16px 32px;
+  /* 上下左右の余白 */
+  text-align: center;
+  /* 文字を中央揃え */
+  text-decoration: none;
+  /* 下線をなくす */
+  display: inline-block;
+  font-size: 16px;
+  /* 文字サイズ */
+  margin: 4px 2px;
+  /* ボタン同士の間隔 */
+  cursor: pointer;
+  /* カーソルをポインターにする */
+  border-radius: 16px;
+  /* ボタンの角を丸める */
+}
+
+/* ストップボタン */
+#stop_btn {
+  background-color: #f44336;
+  /* ボタンの背景色 */
+  border: none;
+  /* ボタンの枠線をなくす */
+  color: white;
+  /* 文字色 */
+  padding: 16px 32px;
+  /* 上下左右の余白 */
+  text-align: center;
+  /* 文字を中央揃え */
+  text-decoration: none;
+  /* 下線をなくす */
+  display: inline-block;
+  font-size: 16px;
+  /* 文字サイズ */
+  margin: 4px 2px;
+  /* ボタン同士の間隔 */
+  cursor: pointer;
+  /* カーソルをポインターにする */
+  border-radius: 16px;
+  /* ボタンの角を丸める */
+}
+
+/* リセットボタン */
+#reset_btn {
+  background-color: #008CBA;
+  /* ボタンの背景色 */
+  border: none;
+  /* ボタンの枠線をなくす */
+  color: white;
+  /* 文字色 */
+  padding: 16px 32px;
+  /* 上下左右の余白 */
+  text-align: center;
+  /* 文字を中央揃え */
+  text-decoration: none;
+  /* 下線をなくす */
+  display: inline-block;
+  font-size: 16px;
+  /* 文字サイズ */
+  margin: 4px 2px;
+  /* ボタン同士の間隔 */
+  cursor: pointer;
+  /* カーソルをポインターにする */
+  border-radius: 16px;
+  /* ボタンの角を丸める */
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-1 {
+  opacity: 1;
+}
+/* 
+.red-text {
+  color: red;
+} */
+
+/* .sita {
+  position: fixed;
+  bottom: 0;
+  text-align: center;
+} */
+
+
+#win-image{
+  width: 500px;
+}
+
+#lose-image {
+  width: 500px;
+}
